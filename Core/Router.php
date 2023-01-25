@@ -65,6 +65,12 @@ class Router
 
     public static function dispatch()
     {
+
+        // if resource is requested return file as is
+        if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
+            return false;
+        }
+
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $uri = $uri ?: '/';
 

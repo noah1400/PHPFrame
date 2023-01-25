@@ -14,7 +14,7 @@ class Response {
         public static function response($data, $status = 200)
         {
             http_response_code($status);
-            echo $data;
+            out($data);
         }
     
         public static function view($view, $data = [])
@@ -32,15 +32,12 @@ class Response {
             return true;
         }
     
-        public static function redirect($path, $before = null, $after = null) {
+        public static function redirect($path, $before = null) {
             if ($before) {
                 $before();
             }
             http_response_code(302);
             header("Location: {$path}");
-            if ($after) {
-                $after();
-            }
         }
 
 

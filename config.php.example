@@ -8,5 +8,5 @@ return $config = [
         "name" => base_path('Database/database.sqlite'),
     ],
     "debug" => "false",
-    "url" => "http://localhost:8080"
+    "url" => "http://localhost:8000"
     ];

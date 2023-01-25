@@ -138,3 +138,26 @@ function url($path = '') {
     return $url . '/' . $path;
 }
 
+function out($data) {
+    echo htmlentities($data, ENT_QUOTES, 'UTF-8');
+}
+
+function outNoEscape($data) {
+    echo $data;
+}
+
+function asset($path) {
+
+    $html = "";
+
+    // if ends with .css
+    // add <link> tag
+
+    if (substr($path, -4) == '.css') {
+        $html = "<link rel='stylesheet' href='" . url('assets/'.$path) . "'>";
+    } else if (substr($path, -3) == '.js') {
+        $html = "<script src='" . url('assets/'.$path) . "'></script>";
+    }
+
+    echo $html;
+}

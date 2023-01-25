@@ -1,9 +1,17 @@
-
+<?php
+use function Core\out;
+use function Core\asset;
+?>
+<head>
+    <?php
+        asset('styles.css')
+    ?>
+</head>
 
 <div>
     <p>
         <?php
-            echo $name;
+            out($name);
         ?>
     </p>
 </div>
