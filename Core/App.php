@@ -5,7 +5,7 @@ class App {
     private static $container;
 
     // Prevent instantiation, since this is a static class
-    private function __construct() {}
+    private static function __construct() {}
 
     public static function setContainer($container)
     {
