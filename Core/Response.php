@@ -19,6 +19,12 @@ class Response {
     
         public static function view($view, $data = [])
         {
+            //flash
+            if (isset($_SESSION['flash'])) {
+                $data = array_merge($data, $_SESSION['flash']);
+                unset($_SESSION['flash']);
+            }
+
             extract($data);
             $view = str_replace('.', DIRECTORY_SEPARATOR, $view);
 
@@ -32,11 +38,17 @@ class Response {
             return true;
         }
     
-        public static function redirect($path, $before = null) {
+        public static function redirect($path, $before = null, $data = []) {
             if ($before) {
                 $before();
             }
-            http_response_code(302);
+
+            // pass data to session
+            foreach ($data as $key => $value) {
+                $_SESSION['flash'][$key] = $value;
+            }
+
+            http_response_code($data['status'] ?? 302);
             header("Location: {$path}");
         }
 

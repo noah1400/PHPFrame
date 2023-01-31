@@ -1,17 +1,12 @@
 <?php
 use function Core\out;
 use function Core\asset;
-?>
-<head>
-    <?php
-        asset('styles.css')
-    ?>
-</head>
+use function Core\view;
 
-<div>
-    <p>
-        <?php
-            out($name);
-        ?>
-    </p>
-</div>
+view('partials/head');
+view('partials/nav');
+?>
+
+<?php
+view('partials/foot');
+?>

@@ -11,7 +11,6 @@ class Database {
     {
 
         $type = config('db.connection');
-
         if ($type == 'sqlite') {
             $this->pdo = new \PDO('sqlite:' . config('db.name'));
         } else {

@@ -4,7 +4,7 @@ namespace Routes;
 
 use Core\Router;
 
-use function Core\dd;
+require 'errors.php';
 
 Router::get('/', 'FirstController@index');
 Router::get('/about', 'FirstController@about');

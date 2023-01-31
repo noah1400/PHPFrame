@@ -161,3 +161,14 @@ function asset($path) {
 
     echo $html;
 }
+
+function view($path) {
+    $path = str_replace('.', DIRECTORY_SEPARATOR, $path);
+    $path = base_path('App/Views/' . $path . '.view.php');
+
+    if (file_exists($path)) {
+        require $path;
+    } else {
+        abort(404, "View {$path} not found");
+    }
+}

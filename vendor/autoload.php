@@ -9,11 +9,10 @@ spl_autoload_register(function ($class) {
             'Core' => 'Core',
     
             'App' => 'App',
-    
+            
             'Routes' => 'Routes'
     
         ];
-
     foreach ($namespaces as $namespace => $path) {
 
         if (strpos($class, $namespace) === 0) {
@@ -36,7 +35,4 @@ spl_autoload_register(function ($class) {
         }
 
     }
-
-
-
 });

@@ -4,6 +4,7 @@ namespace App\Controllers;
 use Core\Response;
 use Core\App;
 
+use function Core\abort;
 use function Core\request;
 
 class FirstController
