@@ -13,7 +13,16 @@ class Database {
         $type = config('db.connection');
         if ($type == 'sqlite') {
             $this->pdo = new \PDO('sqlite:' . config('db.name'));
-        } else {
+        }
+        else if ($type == 'sqlsrv')
+        {
+            $this->pdo = new \PDO(
+                config('db.connection') . ':Server=' . config('db.host') . ';Database=' . config('db.name'),
+                config('db.username'),
+                config('db.password')
+            );
+        }
+        else {
             $this->pdo = new \PDO(
                 config('db.connection') . ':host=' . config('db.host') . ';dbname=' . config('db.name'),
                 config('db.username'),
