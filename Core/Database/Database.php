@@ -31,6 +31,21 @@ class Database {
         }
     }
 
+    public function select($table, $where = [])
+    {
+        $sql = "SELECT * FROM {$table}";
+        if (!empty($where)) {
+            $sql .= ' WHERE ';
+            foreach ($where as $key => $value) {
+                $sql .= $key . ' = :' . $key . ' AND ';
+            }
+            $sql = rtrim($sql, ' AND ');
+        }
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($where);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function query($sql, $params = [])
     {
         $stmt = $this->pdo->prepare($sql);
